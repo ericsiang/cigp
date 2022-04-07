@@ -17,7 +17,7 @@ services:
           - ./data/influxdb:/data    
 
     cadvisor:
-      image: google/cadvisor
+      image: google/cadvisor #mac set gcr.io/cadvisor/cadvisor  ,other set google/cadvisor
       links:
         - influxdb:influxsrv
       command: -storage_driver=influxdb   -storage_driver_db=cadvisor -storage_driver_host=influxsrv:8086
@@ -28,7 +28,7 @@ services:
         - /:/rootfs:ro
         - /var/run:/var/run:rw
         - /sys:/sys:ro
-        - /var/run/docker.sock:/var/run/docker.sock:rw
+        - /var/run/docker.sock:/var/run/docker.sock:rw #mac
         - /var/lib/docker:/var/lib/docker:ro
 
     grafana:
